@@ -8,15 +8,46 @@ import edu.campusnum.visualsort.model.ObservableArray;
  * Date: 27/07/2023
  * Time: 16:31
  */
-public class HeapSort implements SortAlgorithm{
+public class HeapSort implements SortAlgorithm {
+
+
     @Override
     public void sort(ObservableArray array) {
         organise(array);
-
+        int longeur = array.getLength();
+        for (int i = longeur - 1; i >= 0; i--) {
+            array.swap(0, i);
+            goDown(array, i, 0);
+        }
     }
 
-    public void organise(ObservableArray array){
-        for (int i=0; )
+    public void organise(ObservableArray array) {
+        int longeur = array.getLength();
+        for (int i = 0; i < longeur - 1; i++) {
+            goUp(array, i);
+        }
     }
 
+    public void goUp(ObservableArray array, int index) {
+        if (array.get(index) > array.get(index / 2)) {
+            array.swap(index, index / 2);
+            goUp(array, index / 2);
+        }
+    }
+
+    public void goDown(ObservableArray array, int element, int index) {
+        int formule = 2 * index + 1;
+        if (formule < element) {
+            int max;
+            if (array.get(formule) > array.get(2 * index)) {
+                max = formule;
+            } else {
+                max = 2 * index;
+            }
+            if (array.get(max) > array.get(index)) {
+                array.swap(max, index);
+                goDown(array, element, max);
+            }
+        }
+    }
 }
