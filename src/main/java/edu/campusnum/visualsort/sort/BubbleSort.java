@@ -8,22 +8,22 @@ import edu.campusnum.visualsort.model.ObservableArray;
  * Date: 27/07/2023
  * Time: 16:32
  */
-public class BubbleSort implements SortAlgorithm{
+public class BubbleSort implements SortAlgorithm {
     @Override
     public void sort(ObservableArray array) {
+
         int n = array.getLength();
-        int i, j;
-        boolean swapped;
-        for (i = 0; i < n - 1; i++) {
-            swapped = false;
-            for (j = 0; j < n - i - 1; j++) {
-                if (array.get(j) > array.get(j + 1)) {
-                    array.swap(j, j + 1);
-                    swapped = true;
+        int tri = 1;
+        while (tri > 0) {
+            tri = 0;
+            for (int i = 0; i < n - 1; i++) {
+                int x = array.get(i);
+                int y = array.get(i + 1);
+                if (x > y) {
+                    array.swap(i, i + 1);
+                    tri++;
                 }
             }
-            if (!swapped)
-                break;
         }
     }
 }
