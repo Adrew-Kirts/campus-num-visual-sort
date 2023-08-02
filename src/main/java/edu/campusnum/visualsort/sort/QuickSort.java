@@ -9,8 +9,17 @@ import edu.campusnum.visualsort.model.ObservableArray;
  * Time: 16:31
  */
 public class QuickSort implements SortAlgorithm{
+
     @Override
     public void sort(ObservableArray array) {
-        throw new UnsupportedOperationException("Not implemented");
+        int first = array.get(0);
+        int last = array.getLength(); //maybe -1??
+        quicksort(array, first, last);
     }
+
+    public void quicksort(ObservableArray array, int first, int last){
+
+    }
+
+
 }
