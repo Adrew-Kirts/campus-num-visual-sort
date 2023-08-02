@@ -1,49 +1,55 @@
+
+
 package edu.campusnum.visualsort.sort;
 
 import edu.campusnum.visualsort.model.ObservableArray;
 
-public class MergeSort implements SortAlgorithm {
 
+/**
+ * Created by Web 74 all right reserved
+ * User: vincent
+ * Date: 27/07/2023
+ * Time: 16:31
+ */
+public class MergeSort implements SortAlgorithm {
     @Override
     public void sort(ObservableArray array) {
-        int[] auxArray = new int[array.getLength()];
-        mergesort(array, auxArray, 0, array.getLength() - 1);
+//        mergeSort(array);
     }
 
-    private void mergesort(ObservableArray array, int[] auxArray, int first, int last) {
-        if (first < last) {
-            int mid = (first + last) / 2;
-            mergesort(array, auxArray, first, mid);
-            mergesort(array, auxArray, mid + 1, last);
-            merge(array, auxArray, first, mid, last);
-        }
-    }
-
-    private void merge(ObservableArray array, int[] auxArray, int first, int mid, int last) {
-        // Copy elements to the auxiliary array
-        for (int i = first; i <= last; i++) {
-            auxArray[i] = array.get(i);
-        }
-
-        int i = first;
-        int j = mid + 1;
-        int k = first;
-
-        while (i <= mid && j <= last) {
-            if (auxArray[i] <= auxArray[j]) {
-                array.swap(k, i);
-                i++;
-            } else {
-                array.swap(k, j);
-                j++;
-            }
-            k++;
-        }
-
-        while (i <= mid) {
-            array.swap(k, i);
-            i++;
-            k++;
-        }
-    }
+//    public ObservableArray mergeSort(ObservableArray array) {
+//
+//        int n = array.getLength();
+//        int mid = n / 2;
+//        if (n == 1) {
+//            return array;
+//        } else {
+//            ObservableArray left = array.slice(0, mid);
+//            ObservableArray right = array.slice(mid + 1, n - mid); //count is ok for end of array?
+//
+//            left = mergeSort(left);
+//            right = mergeSort(right);
+//
+//            int i = 0, j = 0;
+//            while (i < left.getLength() && j < right.getLength()) {
+//                if (left.get(0) > right.get(0)) {
+////                    add b0 to end of array c
+////                    remove b0 from right
+//                } else {
+////                 add a0 to end of array c
+////                 remove a0 from left
+//                }
+//            }
+//            while (0 < left.getLength()) {
+////                 add a0 to end of array c
+////                 remove a0 from left
+//            }
+//            while (0 < right.getLength()) {
+////                add b0 to end of array c
+////                remove b0 from right
+//            }
+//
+//            return array c;
+//        }
+//    }
 }
